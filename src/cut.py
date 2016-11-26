@@ -25,10 +25,10 @@ source = 'speeches'
 # loop through each speech in speeches folder
 for root, dirs, filenames in os.walk(source):
 	for file in filenames:
-		print file
+		print(file)
 		if file != ".DS_Store":
 			sound_file = AudioSegment.from_wav("speeches/" + file)
-			audio_chunks = split_on_silence(sound_file, 
+			audio_chunks = split_on_silence(sound_file,
 
 			    # must be silent for at least 1 millisecond
 			    min_silence_len=1,
@@ -39,8 +39,8 @@ for root, dirs, filenames in os.walk(source):
 
 			for i, chunk in enumerate(audio_chunks):
 			    out_file = "chunks/audio{0}.wav".format(i)
-			    print out_file
-			    print "exporting", out_file
+			    print (out_file)
+			    print ("exporting", out_file)
 
 			    # export the chunked files to chunks folder
 			    chunk.export(out_file, format="wav")
